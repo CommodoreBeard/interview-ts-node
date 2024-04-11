@@ -1,0 +1,49 @@
+node_modules/
+bin/
+.env
+junit.xml
+dump.sql
+mobile-computing-segment.csv
+mobile_features.txt
+season.csv
+dist
+market_config.sql
+live/
+.DS_Store
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# webstorm
+.idea
+.vscode/launch.json
+
+# eslint
+.eslintcache
+
+# yarn
+yarn-error.log
+
+# Exclusivity reports
+*TestReport.html
+
+# test data output
+*.csv
+
+# sonarqube data output
+.scannerwork
+
+# test coverage
+reports
+test-report.xml
+debug.json

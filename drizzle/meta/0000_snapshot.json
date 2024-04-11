@@ -1,0 +1,224 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "pg",
+  "tables": {
+    "date_dim": {
+      "name": "date_dim",
+      "schema": "",
+      "columns": {
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "day": {
+          "name": "day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quarter": {
+          "name": "quarter",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dayofweek": {
+          "name": "dayofweek",
+          "type": "varchar(9)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weekofyear": {
+          "name": "weekofyear",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "sales_fact": {
+      "name": "sales_fact",
+      "schema": "",
+      "columns": {
+        "saleid": {
+          "name": "saleid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "productid": {
+          "name": "productid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retailerid": {
+          "name": "retailerid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "price": {
+          "name": "price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sales_fact_date_fkey": {
+          "name": "sales_fact_date_fkey",
+          "tableFrom": "sales_fact",
+          "tableTo": "date_dim",
+          "schemaTo": "public",
+          "columnsFrom": [
+            "date"
+          ],
+          "columnsTo": [
+            "date"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "sales_fact_productid_fkey": {
+          "name": "sales_fact_productid_fkey",
+          "tableFrom": "sales_fact",
+          "tableTo": "product_dim",
+          "schemaTo": "public",
+          "columnsFrom": [
+            "productid"
+          ],
+          "columnsTo": [
+            "productid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "sales_fact_retailerid_fkey": {
+          "name": "sales_fact_retailerid_fkey",
+          "tableFrom": "sales_fact",
+          "tableTo": "retailer_dim",
+          "schemaTo": "public",
+          "columnsFrom": [
+            "retailerid"
+          ],
+          "columnsTo": [
+            "retailerid"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "product_dim": {
+      "name": "product_dim",
+      "schema": "",
+      "columns": {
+        "productid": {
+          "name": "productid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "brand": {
+          "name": "brand",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "retailer_dim": {
+      "name": "retailer_dim",
+      "schema": "",
+      "columns": {
+        "retailerid": {
+          "name": "retailerid",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "channel": {
+          "name": "channel",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
