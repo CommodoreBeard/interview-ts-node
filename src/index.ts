@@ -1,22 +1,13 @@
 import express from 'express';
-import { exampleORM, exampleRAW } from './exampleHandler';
+import { exampleHandler } from './exampleHandler';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get('/api/products/analysis', async (req, res) => {
-  return res.json({foo: 'bar'});
-});
-
-app.get('/orm', async (_req, res) => {
-  const data = await exampleORM();
-  res.json(data);
-});
-
-app.get('/raw', async (_req, res) => {
-  const data = await exampleRAW();
+app.get('/example', async (_req, res) => {
+  const data = await exampleHandler();
   res.json(data);
 });
 

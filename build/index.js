@@ -17,15 +17,8 @@ const exampleHandler_1 = require("./exampleHandler");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
-app.get('/api/products/analysis', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    return res.json({ foo: 'bar' });
-}));
-app.get('/orm', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield (0, exampleHandler_1.exampleORM)();
-    res.json(data);
-}));
-app.get('/raw', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield (0, exampleHandler_1.exampleRAW)();
+app.get('/example', (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const data = yield (0, exampleHandler_1.exampleHandler)();
     res.json(data);
 }));
 app.listen(PORT, () => {
